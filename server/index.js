@@ -1,17 +1,24 @@
+// Set up environment variables
 require('dotenv').config();
 const PORT = process.env.PORT || 3001;
 const path = require('path');
 const PUBLIC_DIR = path.join(__dirname, '../public');
 
-const app = require('express')();
+// Set up express server
+const express = require('express');
+const app = express();
+
+// Set up router
+const router = require('./routes');
 
 app
   // Parse JSON payloads
   .use(express.json())
-  // Server public files
+  // Server the public files
   .use(express.static(PUBLIC_DIR))
-  // 
-  .use('/gm', routes)
-  // Error handling
+  // Set up our routes
+  .use('/gm', router)
+  // Handle our errors
   // .use(errorHandler)
+  // Listen to port and log
   .listen(PORT, () => console.log(`Server listening on port ${PORT}`));
