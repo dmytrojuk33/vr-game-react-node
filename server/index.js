@@ -1,11 +1,14 @@
 // Set up environment variables
 require('dotenv').config();
+
 const PORT = process.env.PORT || 3001;
 const path = require('path');
+
 const PUBLIC_DIR = path.join(__dirname, '../public');
 
 // Set up express server
 const express = require('express');
+
 const app = express();
 
 // Set up router
@@ -21,4 +24,4 @@ app
   // Handle our errors
   // .use(errorHandler)
   // Listen to port and log
-  .listen(PORT, () => console.log(`Server listening on port ${PORT}`));
+  .listen(PORT, () => console.log(`Server listening on port ${PORT}`)); // eslint-disable-line no-console
