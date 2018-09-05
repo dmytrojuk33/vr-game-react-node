@@ -3,24 +3,24 @@ import PropTypes from 'prop-types';
 
 const ulStyle = {
   border: '1px solid rgba(226, 226, 228, 1)',
+  height: '250px',
   listStyleType: 'none',
   margin: '20px',
   padding: 0,
-  height: '320px',
-  width: '320px',
+  width: '250px',
 };
 
 const liStyle = {
   background: 'white',
-  color: 'rgba(129, 138, 140, 1)',
   border: '1px solid rgba(226, 226, 228, 1)',
+  boxSizing: 'border-box',
+  color: 'rgba(129, 138, 140, 1)',
   display: 'inline-block',
+  height: '20%',
+  lineHeight: '50px',
+  textAlign: 'center',
   verticalAlign: 'top',
   width: '20%',
-  height: '20%',
-  textAlign: 'center',
-  lineHeight: '62px',
-  boxSizing: 'border-box',
 };
 
 const liStyleMarked = {
@@ -30,15 +30,15 @@ const liStyleMarked = {
 };
 
 const Ticket = ({ ticket }) => (
-  <ul style={ulStyle} data-test="ticket">
+  <ul style={ulStyle} data-test="component-ticket">
     {ticket.map(row => (
       row.map(number => (
         <li
-          style={number.marked ? liStyleMarked : liStyle}
-          data-test="ticket-number"
-          key={`${number.col}-${number.num}`}
+          style={number.isMarked ? liStyleMarked : liStyle}
+          data-test="component-ticket-number"
+          key={`${number.col}-${number.val}`}
         >
-          {number.num < 10 ? `0${number.num}` : number.num}
+          {number.val < 10 ? `0${number.val}` : number.val}
         </li>
       ))
     ))}
@@ -49,8 +49,8 @@ Ticket.propTypes = {
   ticket: PropTypes.arrayOf(
     PropTypes.arrayOf(
       PropTypes.shape({
-        num: PropTypes.number,
-        marked: PropTypes.bool,
+        val: PropTypes.number,
+        isMarked: PropTypes.bool,
         col: PropTypes.string,
       }),
     ),
