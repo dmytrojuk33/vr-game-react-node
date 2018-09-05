@@ -3,6 +3,6 @@ const controller = require('./controller');
 
 // Connect controller methods to their corresponding routes
 router.get('/drawball', controller.drawBall.get);
-router.post('/verifyticket', controller.verifyTicket.post);
+router.post('/verifytickets', controller.verifyTickets.post);
 
 module.exports = router;
