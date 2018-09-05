@@ -1,14 +1,14 @@
-// const model = require('../model');
+const model = require('../model');
 
 module.exports = {
   drawBall: {
     get(req, res) {
-      res.sendStatus(200);
+      res.json(model.drawBall.get());
     },
   },
-  verifyTicket: {
+  verifyTickets: {
     post(req, res) {
-      res.sendStatus(500);
+      res.json(model.verifyTickets.post(req.body));
     },
   },
 };
