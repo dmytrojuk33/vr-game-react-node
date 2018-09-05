@@ -1,25 +1,22 @@
 import React, { Component } from 'react';
-import TicketDisplay from './TicketDisplay';
 import exampleTickets from '../../../assets/exampleData';
+import GMDraws from './GMDraws';
+import UserButtons from './UserButtons';
+import TicketDisplay from './TicketDisplay';
 
 class App extends Component {
-  /**
-   * makeTicket
-   * @param {number} maxNum The maximum integer range for numbers in a ticket.
-   * @returns {Array} Array of 5 row arrays containing objects with num, marked, and col properties.
-  */
-  static makeTicket(maxNum) {
+  static makeTicket(maxRange) {
     const ticket = [];
     const bingoCols = {
       0: 'b', 1: 'i', 2: 'n', 3: 'g', 4: 'o',
     };
-    const randomNums = this.getRandomNums(25, 1, maxNum);
+    const randomNums = this.getRandomNums(25, 1, maxRange);
     for (let i = 0; i < 5; i += 1) {
       ticket.push([]);
       for (let j = 0; j < 5; j += 1) {
         ticket[i].push({
-          num: randomNums[i * 5 + j],
-          marked: false,
+          val: randomNums[i * 5 + j],
+          isMarked: false,
           col: bingoCols[j],
         });
       }
@@ -31,22 +28,19 @@ class App extends Component {
     super();
     this.state = {
       tickets: exampleTickets,
+      recentBalls: [],
     };
+    this.drawBall = this.drawBall.bind(this);
+    this.verifyTickets = this.verifyTickets.bind(this);
   }
 
   componentDidMount() {
     this.makeTickets(4, 100);
+    this.drawBall();
   }
 
-  /**
-   * getRandomNums
-   * @param {number} count The number of requested random integers.
-   * @param {number} min The minimum integer range.
-   * @param {number} max The maximum integer range.
-   * @returns {Array} Array of [count] random integers.
-   */
-  static getRandomNums(count, min, max) {
-    const availNums = Array.from(new Array(max), (val, idx) => idx + min);
+  static getRandomNums(count, minRange, maxRange) {
+    const availNums = Array.from(new Array(maxRange), (val, idx) => idx + minRange);
     let c = count;
     let m = availNums.length;
     while (c) {
@@ -58,23 +52,61 @@ class App extends Component {
     return availNums.slice(-count);
   }
 
-  /**
-   * makeTickets
-   * @param {number} count The number of requested tickets.
-   * @param {number} maxNum The maximum integer range for numbers in a ticket.
-   */
-  makeTickets(count, maxNum) {
+  makeTickets(count, maxRange) {
     const tickets = [];
     for (let i = 0; i < count; i += 1) {
-      tickets.push(App.makeTicket(maxNum));
+      tickets.push(App.makeTicket(maxRange));
     }
     this.setState({ tickets });
   }
 
-  render() {
+  drawBall() {
+    fetch('gm/drawball')
+      .then(response => response.json())
+      .then(recentBalls => this.markTickets(recentBalls))
+      .catch(error => console.error('Error:', error)); // eslint-disable-line no-console
+  }
+
+  markTickets(recentBalls) {
     const { tickets } = this.state;
+    tickets.forEach(ticket => ticket.forEach(row => row.forEach((number) => {
+      if (recentBalls.includes(number.val)) {
+        number.isMarked = true; // eslint-disable-line no-param-reassign
+      }
+    })));
+    this.setState({ tickets });
+  }
+
+  verifyTickets() {
+    const { tickets } = this.state;
+    fetch('gm/verifytickets', {
+      method: 'POST',
+      body: JSON.stringify(tickets),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then(res => res.json())
+      .then((isBingo) => {
+        console.log(isBingo); // eslint-disable-line no-console
+        if (isBingo) {
+          // this.congratulateWinner();
+        } else {
+          this.drawBall();
+        }
+      })
+      .catch(error => console.error('Error:', error)); // eslint-disable-line no-console
+  }
+
+  // congratulateWinner() {
+
+  // }
+
+  render() {
+    const { tickets, recentBalls } = this.state;
     return (
       <div data-test="component-app">
+        <GMDraws recentBalls={recentBalls.slice(-5)} />
+        <UserButtons drawBall={this.drawBall} verifyTickets={this.verifyTickets} />
         <TicketDisplay tickets={tickets} />
       </div>
     );
