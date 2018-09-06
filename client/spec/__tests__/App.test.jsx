@@ -1,5 +1,6 @@
 import React from 'react';
 import App from '../../src/components/App';
+import 'whatwg-fetch';
 
 /**
  * Factory function to create a shallow wrapper for the App component.
