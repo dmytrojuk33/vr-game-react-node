@@ -1,6 +1,4 @@
 # Bingo Game
-A bingo game in React/Node submitted for a coding challenge. 
-
 As a player, you get four tickets to try your hand at winning bingo. When the game master (GM) draws a ball calling a number, hover over the number on your ticket and click to mark it. You can also click on the auto-mark button to automatically mark all drawn numbers on your tickets. 
 
 With this version of Bingo, once you have a ticket filled with all numbers marked, click on the 'Call Bingo' button to verify your ticket with the GM. Oh, and don't worry about losing your place if you refresh the page. Good luck!
