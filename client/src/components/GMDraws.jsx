@@ -10,24 +10,27 @@ const divContainerStyle = {
 };
 
 const divPrevioussBalls = {
-
+  display: 'inline-block',
+  margin: '0 auto',
 };
 
 const GMDraws = ({ recentBalls }) => (
   <div style={divContainerStyle} data-test="component-gmdraws">
-    { recentBalls.map((num, idx) => (
-      idx === 0
-        ? <LastBall number={num} key={num} />
-        : (
-          <div style={divPrevioussBalls}>
-            <h4>
-              Previous Balls
-            </h4>
-            <PreviousBall number={num} key={num} />
-          </div>
-        )
-    ))
+    { recentBalls[0]
+    && <LastBall number={recentBalls[0]} />
     }
+    { recentBalls[1]
+    && (
+    <div style={divPrevioussBalls} data-test="component-previous-balls">
+      <h4 style={{ display: 'inline-block' }}>
+        Previous Balls
+      </h4>
+      { recentBalls.slice(1).map(num => (
+        <PreviousBall number={num} key={`pb${num}`} />
+      ))
+      }
+    </div>
+    ) }
   </div>
 );
 
