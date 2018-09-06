@@ -13,7 +13,14 @@ const setup = (props = {}, state = null) => {
 const findByTestAttr = (wrapper, val) => wrapper.find(`[data-test='${val}']`);
 
 test('render without error', () => {
-  const props = { drawBall() {}, verifyTickets() {} };
+  const props = {
+    drawBall() {},
+    verifyTickets() {},
+    newGame() {},
+    autoMarkTickets() {},
+    isJumped: false,
+    isWinner: false,
+  };
   const wrapper = setup(props);
   const userButtonsComponent = findByTestAttr(wrapper, 'component-user-buttons');
   expect(userButtonsComponent.length).toBe(1);
