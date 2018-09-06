@@ -21,6 +21,7 @@ const liStyle = {
   textAlign: 'center',
   verticalAlign: 'top',
   width: '20%',
+  cursor: 'pointer',
 };
 
 const liStyleMarked = {
@@ -29,16 +30,22 @@ const liStyleMarked = {
   color: 'white',
 };
 
-const Ticket = ({ ticket }) => (
+const Ticket = ({ ticket, ticketId, markTicket }) => (
   <ul style={ulStyle} data-test="component-ticket">
-    {ticket.map(row => (
-      row.map(number => (
+    {ticket.map((row, rowIdx) => (
+      row.map((number, numberIdx) => (
         <li
           style={number.isMarked ? liStyleMarked : liStyle}
           data-test="component-ticket-number"
           key={`${number.col}-${number.val}`}
         >
-          {number.val < 10 ? `0${number.val}` : number.val}
+          <div
+            onClick={() => markTicket(ticketId, rowIdx, numberIdx, number)}
+            role="presentation"
+            style={{ userSelect: 'none' }}
+          >
+            {number.val < 10 ? `0${number.val}` : number.val}
+          </div>
         </li>
       ))
     ))}
@@ -55,6 +62,8 @@ Ticket.propTypes = {
       }),
     ),
   ).isRequired,
+  markTicket: PropTypes.func.isRequired,
+  ticketId: PropTypes.number.isRequired,
 };
 
 export default Ticket;
