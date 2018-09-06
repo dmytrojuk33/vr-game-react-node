@@ -3,17 +3,18 @@ import PropTypes from 'prop-types';
 
 
 const divContainerStyle = {
-  background: 'rgba(225, 230, 234, 1)',
-  width: '100%',
   minHeight: '100px',
+  display: 'inline-block',
+  margin: '0 20%',
 };
 
 const headerStyle = {
-
+  display: 'inline-block',
 };
 
 const divLastBallStyle = {
-
+  display: 'inline-block',
+  margin: '0 10px',
 };
 
 const LastBall = ({ number }) => (
