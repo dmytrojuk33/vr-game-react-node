@@ -1,11 +1,17 @@
 const getRandomNums = (count, minRange, maxRange) => {
+  if (typeof count !== 'number' || typeof minRange !== 'number' || typeof maxRange !== 'number') {
+    throw Error('Arguments must be numbers.');
+  }
+  if (count > (maxRange - minRange + 1)) {
+    throw Error('Count requested must not exceed the given range.');
+  }
   const availNums = Array.from(new Array(maxRange), (val, idx) => idx + minRange);
   let c = count;
   let last = availNums.length;
   while (c > 0) {
-    const rand = Math.floor(Math.random() * last--); // eslint-disable-line no-plusplus
-    [availNums[last], availNums[rand]] = [availNums[rand], availNums[last]];
-    c--; // eslint-disable-line
+    const randIdx = Math.floor(Math.random() * last--); // eslint-disable-line no-plusplus
+    [availNums[last], availNums[randIdx]] = [availNums[randIdx], availNums[last]];
+    c -= 1;
   }
   return availNums.slice(-count);
 };
