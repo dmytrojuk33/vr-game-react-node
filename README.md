@@ -51,6 +51,59 @@ environment.
 feedback or suggestions from your interviewer? Do you seek help or guidance when stuck?
 - Production readiness: plan for outages, 99.9999% availability
 
+## FAQ
+Question:
+May you assume this game will target modern browsers? Is there a minimum browser version this should support?
+Answer:
+Yes just modern browsers, working on the latest version of Chrome is fine.
+
+Question:
+Is a winning ticket completed upon a marked row, column, or diagonal, or is it completed when the entire ticket has all numbers marked? It seems the latter by the instructions.
+Answer:
+When the entire ticket has all numbers marked.
+
+Question:
+Confirming that the ticket’s random numbers are not ordered by column b-i-n-g-o 1-20, 21-40, 41-60, 61-80, 81-100, like some Bingo versions? It seems it is not by the PDF example.
+Answer:
+Yea, totally random is fine.
+
+Question:
+What happens if a player overlooks to cross off/mark a number? Should they be marked automatically? It seems the latter by the instructions.
+Answer:
+If they don’t cross it off it shouldn’t be marked automatically.
+
+Question:
+What happens if a player has a winning ticket but does not call bingo? Should the game automatically stop or keep continuing with additional numbers to be marked on the ticket(s)? Or should bingo be automatically called?
+Answer:
+If a player has Bingo put doesn’t call it the game should continue as normal. A player needs to call it Bingo to win.
+
+Question:
+Should a new ball be drawn upon a button click or at set intervals?
+Answer:
+Button click.
+
+Question:
+Any particular code coverage for Jest/Enzyme unit testing? Any other general expectations on testing for this MVP?
+Answer:
+Nothing particular! If you can test the main features/logic that’s great, we don’t expect 100% coverage.
+
+Question:
+Should the data, including all drawn numbers, persist upon a server restart? General expectations of data persistence?
+Answer:
+The data doesn’t need to persist for the mvp.. Sounds like a great feature to add later on. Same with persisting the data on the client (if a user refreshes, etc..) You don’t need to persist it. You can add either of these features if you have time.
+ 
+Question:
+Do you prefer a global stylesheet, inline styles, CSS modules or Styled Components?
+Answer:
+Up to you!
+
+Question:
+Do you prefer a style guide and/or linter? If not, please let me know if ESLint extending the airbnb style guide is not acceptable.
+Answer:
+ESLint is acceptable. We’re not particular on any style for this exercise, though it looks good if you’re style/linting is consistent.
+We tend to use a mix or prettier and standard on our team.
+
+
 Once you are done coding, please upload your solution to your github account and send us the
 link.
 Good luck!
