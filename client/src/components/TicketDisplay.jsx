@@ -10,8 +10,7 @@ const divStyle = {
   height: '88%',
   justifyContent: 'center',
   margin: '0 auto',
-  maxWidth: '800px',
-  paddingTop: '10px',
+  maxWidth: '700px',
   width: '100%',
 };
 

@@ -1,38 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+
 const divButtonsContainer = {
-  paddingTop: '20px',
-  width: '100%',
+  color: 'rgba(90, 102, 113, 1)',
+  minHeight: '65px',
+  paddingTop: '10px',
   textAlign: 'center',
-  display: 'flex',
-  flexwrap: 'wrap',
-  justifyContent: 'center',
-  alignItems: 'center',
+  width: '100%',
 };
 
-const buttonDrawBallStyle = {
-  display: 'block',
+const buttonStyle = {
+  backgroundColor: 'white',
+  border: '1px solid transparent',
+  borderRadius: '2px',
+  boxShadow: '0 1px 2px rgba(0,0,0,0.2)',
+  color: 'rgba(90, 102, 113, 1)',
+  cursor: 'pointer',
+  display: 'inline',
   margin: '5px',
   userSelect: 'none',
 };
 
-const buttonVerifyTicketsStyle = {
-  display: 'block',
-  margin: '5px',
-  userSelect: 'none',
+const divJumpedStyle = {
+  color: 'rgba(90, 102, 113, 1)',
 };
 
-const buttonAutoMarkStyle = {
-  display: 'block',
-  margin: '5px',
-  userSelect: 'none',
-};
-
-const buttonNewGameStyle = {
-  display: 'block',
-  margin: '5px',
-  userSelect: 'none',
+const divWinnerStyle = {
+  color: 'rgba(90, 102, 113, 1)',
 };
 
 const UserButtons = ({
@@ -40,43 +35,47 @@ const UserButtons = ({
 }) => (
   <div style={divButtonsContainer} data-test="component-user-buttons">
     <button
+      style={buttonStyle}
       type="button"
-      style={buttonDrawBallStyle}
       onClick={drawBall}
     >
       Draw Ball
     </button>
     <button
+      style={buttonStyle}
       type="button"
-      style={buttonVerifyTicketsStyle}
       onClick={verifyTickets}
     >
       Call Bingo
     </button>
     <button
+      style={buttonStyle}
       type="button"
-      style={buttonAutoMarkStyle}
       onClick={autoMarkTickets}
     >
-      Mark All Drawn
+      Auto Mark
     </button>
     <button
+      style={buttonStyle}
       type="button"
-      style={buttonNewGameStyle}
       onClick={newGame}
     >
       New Game
     </button>
     {isJumped
     && (
-      <div>
-        You jumped the gun. You need all numbers marked on a ticket to win.
+      <div style={divJumpedStyle}>
+        You jumped the gun.
+        <br />
+        You need all numbers marked on a ticket to win.
       </div>
     )}
     {isWinner
     && (
-      <div>
-        Congratulations! You Won!
+      <div style={divWinnerStyle}>
+        Congratulations!!!
+        <br />
+        You Won!!!
       </div>
     )}
   </div>
