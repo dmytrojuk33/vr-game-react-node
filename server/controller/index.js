@@ -1,6 +1,6 @@
-const model = require('../model');
+import model from '../model';
 
-module.exports = {
+const controller = {
   drawBall: {
     get(req, res) {
       res.json(model.drawBall.get());
@@ -23,3 +23,5 @@ module.exports = {
     },
   },
 };
+
+export default controller;

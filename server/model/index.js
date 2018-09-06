@@ -1,6 +1,6 @@
-const db = require('../db');
+import db from '../db';
 
-module.exports = {
+export default {
   drawBall: {
     get() {
       let nextBall;

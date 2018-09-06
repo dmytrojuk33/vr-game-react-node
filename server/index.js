@@ -1,26 +1,18 @@
-// Set up environment variables
-require('dotenv').config();
+import express from 'express';
+import path from 'path';
+import gmRouter from './routesGM';
 
 const PORT = process.env.PORT || 3001;
-const path = require('path');
-
 const PUBLIC_DIR = path.join(__dirname, '../public');
-
-// Set up express server
-const express = require('express');
-
 const app = express();
-
-// Set up router
-const router = require('./routes');
 
 app
   // Parse JSON payloads
   .use(express.json())
-  // Server the public files
+  // Serve the public files
   .use(express.static(PUBLIC_DIR))
   // Set up our routes
-  .use('/gm', router)
+  .use('/gm', gmRouter)
   // Handle our errors
   // .use(errorHandler)
   // Listen to port and log
