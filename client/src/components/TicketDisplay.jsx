@@ -15,11 +15,15 @@ const divStyle = {
   width: '100%',
 };
 
-const TicketDisplay = ({ tickets }) => (
+const TicketDisplay = ({ tickets, markTicket }) => (
   <div style={divStyle} data-test="component-ticket-display">
     { tickets.map((ticket, idx) => (
-      // eslint-disable-next-line react/no-array-index-key
-      <Ticket ticket={ticket} key={`ticketNumber${idx}`} />
+      <Ticket
+        ticket={ticket}
+        markTicket={markTicket}
+        ticketId={idx}
+        key={idx} // eslint-disable-line react/no-array-index-key
+      />
     ))}
   </div>
 );
@@ -36,6 +40,7 @@ TicketDisplay.propTypes = {
       ),
     ),
   ).isRequired,
+  markTicket: PropTypes.func.isRequired,
 };
 
 export default TicketDisplay;
