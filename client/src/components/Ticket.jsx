@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 const ulStyle = {
   border: '1px solid rgba(226, 226, 228, 1)',
-  height: '250px',
+  height: '200px',
   listStyleType: 'none',
   margin: '20px',
   padding: 0,
-  width: '250px',
+  width: '200px',
 };
 
 const liStyle = {

@@ -101,7 +101,7 @@ class App extends Component {
         <GMDraws
           recentBalls={recentBalls.slice(-5).reverse()}
         />
-        <h1 style={{ textAlign: 'center' }}>
+        <h1 style={{ textAlign: 'center', paddingTop: '10px', color: 'rgba(90, 102, 113, 1)' }}>
           Bingo
         </h1>
         <UserButtons
