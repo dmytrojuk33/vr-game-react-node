@@ -1,6 +1,6 @@
 import db from '../db';
 
-export default {
+const model = {
   drawBall: {
     get() {
       let nextBall;
@@ -27,3 +27,5 @@ export default {
     },
   },
 };
+
+export default model;
