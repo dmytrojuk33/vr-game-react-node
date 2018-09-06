@@ -72,7 +72,7 @@ class App extends Component {
         number.isMarked = true; // eslint-disable-line no-param-reassign
       }
     })));
-    this.setState({ tickets });
+    this.setState({ tickets, isJumped: false });
   }
 
   verifyTickets() {
@@ -83,7 +83,7 @@ class App extends Component {
       headers: {
         'Content-Type': 'application/json',
       },
-    }).then(res => res.json())
+    }).then(response => response.json())
       .then(isBingo => (isBingo ? this.congratulateWinner() : this.setState({ isJumped: true })))
       .catch(error => console.error('Error:', error)); // eslint-disable-line no-console
   }
