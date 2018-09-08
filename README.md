@@ -12,6 +12,10 @@ Run the server.
 ```
 npm start
 ```
+Browse the game.
+```
+http://localhost:3001/
+```
 
 ## Challenge Specification Guide
 #### General Bingo game rules:
