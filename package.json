@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "npm run build-server && npm run build-client && npm run serve",
-    "build-server": "babel server -d server-dist --presets env",
+    "build-server": "babel server -d server-dist",
     "build-client": "webpack -d",
     "serve": "node server-dist/index.js",
     "start-dev": "npm run build-dev & npm run serve-dev",
