@@ -1,22 +1,27 @@
 {
   "name": "bingo",
   "version": "1.0.0",
-  "description": "A bingo game.",
+  "description": "A bingo game in React/Node submitted for a coding challenge.",
   "main": "index.js",
   "engines": {
     "node": ">=8.9.4"
   },
   "scripts": {
-    "build": "webpack -d --watch",
-    "test": "jest",
-    "start": "nodemon server/index.js --exec babel-node --presets babel-preset-env"
+    "start": "npm run build-server && npm run build-client && npm run serve",
+    "build-server": "babel server -d server-dist",
+    "build-client": "webpack -d",
+    "serve": "node server-dist/index.js",
+    "start-dev": "npm run build-dev & npm run serve-dev",
+    "build-dev": "webpack -d --watch",
+    "serve-dev": "nodemon server-dist/index.js --exec babel-node",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lighthurst/bingo.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Aaron Tesfai",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/lighthurst/bingo/issues"
@@ -40,6 +45,7 @@
     "extends": "airbnb"
   },
   "dependencies": {
+    "babel-cli": "^6.26.0",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "prop-types": "^15.6.2",
@@ -47,7 +53,6 @@
     "react-dom": "^16.4.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.6",
     "babel-loader": "^7.1.5",
