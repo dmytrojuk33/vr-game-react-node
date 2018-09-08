@@ -1,5 +1,5 @@
 # Bingo Game
-As a player, you get four tickets to try your hand at winning bingo. When the game master (GM) draws a ball calling a number, hover over the number on your ticket and click to mark it. You can also click the auto-mark button to automatically mark all drawn numbers on your tickets. 
+As a player, you get four tickets to try your hand at winning Bingo. When the game master (GM) draws a ball calling a number, hover over the number on your ticket and click to mark it. You can also click the auto-mark button to automatically mark all drawn numbers on your tickets. 
 
 With this version of Bingo, once you have a ticket filled with all twenty-five numbers marked, click the 'Call Bingo' button to verify your ticket with the GM. Oh, and don't worry about losing your place if you refresh the page. Good luck!
 
@@ -41,7 +41,7 @@ API endpoint
 2. The RESTFul API should be implemented using Node.js + ExpressJS
 
 #### Implementation hints:
-1. Implement a 1 player browser based bingo ticket display and functionality with HTML, CSS3, React
+1. Implement a 1 player browser based bingo ticket display and functionality with HTML, CSS3, and React
 2. For the REST API, implement an endpoint to draw the next ball and an endpoint to verify a
 winning ticket claim
 3. On the React side when you obtain the next ball from the API server, mark it if found on any or all the tickets you initialize
@@ -68,19 +68,19 @@ Answer:
 When the entire ticket has all numbers marked.
 
 Question:
-Confirming that the ticket’s random numbers are not ordered by column b-i-n-g-o 1-20, 21-40, 41-60, 61-80, 81-100, like some Bingo versions? It seems it is not by the PDF example.
+Confirming that the ticket’s random numbers are not ordered by columns b-i-n-g-o, e.g., 1-20, 21-40, 41-60, 61-80, 81-100, like some Bingo versions? It seems it's not by the PDF example.
 Answer:
 Yea, totally random is fine.
 
 Question:
-What happens if a player overlooks to cross off/mark a number? Should they be marked automatically? It seems the latter by the instructions.
+What happens if a player overlooks to cross off/mark a number? Should the number be marked automatically? It seems the latter by the instructions.
 Answer:
 If they don’t cross it off it shouldn’t be marked automatically.
 
 Question:
-What happens if a player has a winning ticket but does not call bingo? Should the game automatically stop or keep continuing with additional numbers to be marked on the ticket(s)? Or should bingo be automatically called?
+What happens if a player has a winning ticket but does not call Bingo? Should the game automatically stop or keep continuing with additional numbers to be marked on the ticket(s)? Or should Bingo be automatically called?
 Answer:
-If a player has Bingo put doesn’t call it the game should continue as normal. A player needs to call it Bingo to win.
+If a player has Bingo but doesn’t call it the game should continue as normal. A player needs to call it Bingo to win.
 
 Question:
 Should a new ball be drawn upon a button click or at set intervals?
@@ -95,15 +95,15 @@ Nothing particular! If you can test the main features/logic that’s great, we d
 Question:
 Should the data, including all drawn numbers, persist upon a server restart? General expectations of data persistence?
 Answer:
-The data doesn’t need to persist for the mvp.. Sounds like a great feature to add later on. Same with persisting the data on the client (if a user refreshes, etc..) You don’t need to persist it. You can add either of these features if you have time.
+The data doesn’t need to persist for the mvp. Sounds like a great feature to add later on. Same with persisting the data on the client (if a user refreshes, etc.). You don’t need to persist it. You can add either of these features if you have time.
  
 Question:
-Do you prefer a global stylesheet, inline styles, CSS modules or Styled Components?
+Do you prefer a global stylesheet, inline styles, CSS modules, or Styled Components?
 Answer:
 Up to you!
 
 Question:
-Do you prefer a style guide and/or linter? If not, please let me know if ESLint extending the airbnb style guide is not acceptable.
+Do you prefer a style guide and/or linter? If not, please let me know if ESLint extending the Airbnb style guide is not acceptable.
 Answer:
 ESLint is acceptable. We’re not particular on any style for this exercise, though it looks good if you’re style/linting is consistent.
 We tend to use a mix or prettier and standard on our team.
