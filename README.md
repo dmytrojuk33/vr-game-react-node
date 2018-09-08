@@ -4,13 +4,13 @@ As a player, you get four tickets to try your hand at winning bingo. When the ga
 With this version of Bingo, once you have a ticket filled with all twenty-five numbers marked, click the 'Call Bingo' button to verify your ticket with the GM. Oh, and don't worry about losing your place if you refresh the page. Good luck!
 
 ## Usage
-Build your webpack bundle after you install all dependencies.
-```
-npm run build
-```
-Run the server.
+Compile files and start the server in production mode.
 ```
 npm start
+```
+Alternatively, compile and start in development mode with webpack watch mode on and nodemon.
+```
+npm start-dev
 ```
 Browse the game.
 ```
