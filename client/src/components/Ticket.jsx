@@ -17,7 +17,7 @@ const liStyle = {
   color: 'rgba(129, 138, 140, 1)',
   display: 'inline-block',
   height: '20%',
-  lineHeight: '50px',
+  lineHeight: '40px',
   textAlign: 'center',
   verticalAlign: 'top',
   width: '20%',
