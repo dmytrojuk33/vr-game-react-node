@@ -1,9 +1,9 @@
 const getRandomNums = (count, minRange, maxRange) => {
-  if (typeof count !== 'number' || typeof minRange !== 'number' || typeof maxRange !== 'number') {
-    throw Error('Arguments must be numbers.');
+  if (!Number.isInteger(count) || !Number.isInteger(minRange) || !Number.isInteger(maxRange)) {
+    throw Error('Arguments must be integers.');
   }
-  if (count > (Math.abs(maxRange - minRange) + 1)) {
-    throw Error('Count requested must not exceed the given range.');
+  if (count > (Math.abs(maxRange - minRange) + 1) || count < 1) {
+    throw Error('Count must be a positive integer not to exceed the given range.');
   }
   const availNums = Array.from(new Array(maxRange), (val, idx) => idx + minRange);
   let c = count;
