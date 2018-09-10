@@ -10,7 +10,7 @@ npm start
 ```
 Alternatively, compile and start in development mode with webpack watch mode on and nodemon.
 ```
-npm start-dev
+npm run start-dev
 ```
 Browse the game.
 ```
