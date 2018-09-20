@@ -13,6 +13,7 @@ class App extends Component {
       recentBalls: [],
       isJumped: false,
       isWinner: false,
+      gameType: 'rowOrCol',
     };
     this.drawBall = this.drawBall.bind(this);
     this.markTicket = this.markTicket.bind(this);
@@ -76,10 +77,11 @@ class App extends Component {
   }
 
   verifyTickets() {
-    const { tickets } = this.state;
+    const { tickets, gameType } = this.state;
+    const verification = { tickets, gameType };
     fetch('gm/verifytickets', {
       method: 'POST',
-      body: JSON.stringify(tickets),
+      body: JSON.stringify(verification),
       headers: {
         'Content-Type': 'application/json',
       },
