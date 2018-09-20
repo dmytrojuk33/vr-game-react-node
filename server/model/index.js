@@ -4,8 +4,9 @@ export const helpers = {
   isFullBingo(ticket) {
     return ticket.every(row => row.every(number => db.has(number.val)));
   },
-  isRowOrColBingo(ticket) {
-    return this.isRowBingo(ticket) || this.isColBingo(ticket);
+  isRowOrColOrDiagBingo(ticket) {
+    return this.isRowBingo(ticket) || this.isColBingo(ticket)
+      || this.isMajDiagBingo(ticket) || this.isMinDiagBingo(ticket);
   },
   isRowBingo(ticket) {
     return ticket.some(row => row.every(number => db.has(number.val)));
@@ -25,6 +26,30 @@ export const helpers = {
     }
     return false;
   },
+  isMajDiagBingo(ticket) {
+    let row = 0;
+    let col = 0;
+    while (col < ticket.length && row < ticket.length) {
+      if (!db.has(ticket[row][col].val)) {
+        return false;
+      }
+      row++;
+      col++;
+    }
+    return true;
+  },
+  isMinDiagBingo(ticket) {
+    let row = 0;
+    let col = ticket.length - 1;
+    while (col >= 0 && row < ticket.length) {
+      if (!db.has(ticket[row][col].val)) {
+        return false;
+      }
+      row++;
+      col--;
+    }
+    return true;
+  },
 };
 
 const model = {
@@ -43,7 +68,7 @@ const model = {
       const { tickets, gameType } = verification;
       return gameType === 'full'
         ? tickets.some(ticket => helpers.isFullBingo(ticket))
-        : tickets.some(ticket => helpers.isRowOrColBingo(ticket));
+        : tickets.some(ticket => helpers.isRowOrColOrDiagBingo(ticket));
     },
   },
   newGame: {
